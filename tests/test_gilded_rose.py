@@ -23,6 +23,12 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertTrue("Brie should not be able to have a higher quality than 50", items[0].quality == 50)
 
+    def test_bar(self):
+        items = [Item("foo", 0, 0)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEquals("foo_bar", items[0].name)
+
 
 
 
