@@ -14,7 +14,17 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("Aged Brie", 0, 1)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertTrue("Brie is a higher quality", items[0].quality > 1)
+        self.assertTrue("Brie is now of a higher quality", items[0].quality > 1)
+
+    def test_never_over_50(self):
+        items = [Item("Aged Brie", 0, 50)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertTrue("Brie should not be able to have a higher quality than 50", items[0].quality == 50)
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
