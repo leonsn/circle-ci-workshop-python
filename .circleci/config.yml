@@ -1,7 +1,7 @@
 version: 2.0
 jobs:
   build:
-    working_directory: ~/circleci-python
+    working_directory: ~/circleci-python-project
     docker:
       - image: circleci/python:3.6.4
     steps:
@@ -11,12 +11,9 @@ jobs:
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run:
           command: |
-            sudo pip install pipenv
-            pipenv install
             sudo pip install unittest-xml-reporting
       - run:
           command: |
-            #pipenv run python test_gilded_rose.py
             python -m xmlrunner discover -s tests -t tests -o test-results
       - store_test_results: # Upload test results for display in Test Summary
           path: test-results
