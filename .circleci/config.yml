@@ -13,9 +13,11 @@ jobs:
           command: |
             sudo pip install pipenv
             pipenv install
+            sudo pip install unittest-xml-reporting
       - run:
           command: |
-            pipenv run python test_gilded_rose.py > test-results/file.txt
+            #pipenv run python test_gilded_rose.py
+            python -m xmlrunner discover -t test_gilded_rose.py -o test-results
       - store_test_results: # Upload test results for display in Test Summary
           path: test-results
       - store_artifacts: # Upload test summary for display in Artifacts
