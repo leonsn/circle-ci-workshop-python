@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 import sys
-sys.path.append("..")
+sys.path.append("../code/")
 from gilded_rose import Item, GildedRose
 
 class GildedRoseTest(unittest.TestCase):
@@ -15,13 +15,15 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("Aged Brie", 0, 1)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertTrue("Brie is now of a higher quality", items[0].quality > 1)
+        self.assertTrue("The quality of the Aged Brie should " \
+                "increase during quality update", items[0].quality > 1)
 
     def test_never_over_50(self):
         items = [Item("Aged Brie", 0, 50)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertTrue("Brie should not be able to have a higher quality than 50", items[0].quality == 50)
+        self.assertTrue("Brie should not be able to have a higher " \
+                "quality than 50", items[0].quality == 50)
 
 
 
